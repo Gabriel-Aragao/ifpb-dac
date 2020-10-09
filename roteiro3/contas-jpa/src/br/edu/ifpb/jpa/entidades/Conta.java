@@ -1,23 +1,23 @@
 package br.edu.ifpb.jpa.entidades;
 
+
+import javax.persistence.EmbeddedId;
+import javax.persistence.Entity;
+import javax.persistence.ManyToMany;
+
+import br.edu.ifpb.jpa.entidades.embeddables.ContaId;
+
+@Entity
 public class Conta {
 
-	private Integer id;
+	@EmbeddedId
+	private ContaId id;
+
+	@ManyToMany(mappedBy = "contas")
 	private Cliente[] titulares;
+	
 //	private String banco;
-	private String agencia;
-	private String conta;
-
-	public Integer getId() {
-		return id;
-	}
-
-	public void setId(Integer id) {
-		this.id = id;
-	}
-
-
-
+//
 //	public String getBanco() {
 //		return banco;
 //	}
@@ -25,6 +25,14 @@ public class Conta {
 //	public void setBanco(String banco) {
 //		this.banco = banco;
 //	}
+	
+	public ContaId getId() {
+		return id;
+	}
+
+	public void setId(ContaId id) {
+		this.id = id;
+	}
 
 	public Cliente[] getTitulares() {
 		return titulares;
@@ -33,22 +41,5 @@ public class Conta {
 	public void setTitulares(Cliente[] titulares) {
 		this.titulares = titulares;
 	}
-
-	public String getConta() {
-		return conta;
-	}
-
-	public void setConta(String conta) {
-		this.conta = conta;
-	}
-
-	public String getAgencia() {
-		return agencia;
-	}
-
-	public void setAgencia(String agencia) {
-		this.agencia = agencia;
-	}
-
 
 }

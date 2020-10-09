@@ -1,12 +1,28 @@
 package br.edu.ifpb.jpa.entidades;
 
+import com.sun.istack.NotNull;
+
+import javax.persistence.Column;
+import javax.persistence.Embeddable;
+
+@Embeddable
 public class Endereco {
-	
+	@NotNull
 	private String rua;
+	@NotNull
+	@Column(length = 10)
 	private String numero;
+	@NotNull
+	@Column(length = 100)
 	private String bairro;
+	@NotNull
+	@Column( length = 8)
 	private String cep;
+	@NotNull
+	@Column(length = 100)
 	private String cidade;
+	@NotNull
+	@Column(length = 30)
 	private String estado;
 	
 	
