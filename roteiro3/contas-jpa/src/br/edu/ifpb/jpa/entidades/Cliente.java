@@ -4,6 +4,7 @@ import com.sun.istack.NotNull;
 
 
 import javax.persistence.*;
+import java.util.List;
 
 
 @Entity
@@ -25,11 +26,12 @@ public class Cliente {
 	private Endereco endereco;
 	
 	@ManyToMany
-	@JoinTable(
-	  name = "CONTAS_TITULARES", 
-	  joinColumns = @JoinColumn(name = "cliente_id"), 
-	  inverseJoinColumns = @JoinColumn(name = "conta_id"))
-	private Conta[] contas;
+	@JoinColumns({
+			@JoinColumn(name = "conta_id"),
+			@JoinColumn(name = "agencia_id")
+	})
+	@JoinTable(name="CONTAS_TITULARES")
+	private List<Conta> contas;
 	
 	
 	public long getId() {
@@ -56,10 +58,10 @@ public class Cliente {
 	public void setEndereco(Endereco endereco) {
 		this.endereco = endereco;
 	}
-	public Conta[] getContas() {
+	public List<Conta> getContas() {
 		return contas;
 	}
-	public void setContas(Conta[] contas) {
+	public void setContas(List<Conta> contas) {
 		this.contas = contas;
 	}
 

@@ -16,7 +16,9 @@ public class Movimentacao {
 	private double valor;
 	private Date data;
 	private Time hora;
+	@OneToOne
 	private Conta conta;
+	@Enumerated(EnumType.STRING)
 	private TipoMovimentacao tipo;
 	@ElementCollection(targetClass=String.class)
 	private List<String> categorias;

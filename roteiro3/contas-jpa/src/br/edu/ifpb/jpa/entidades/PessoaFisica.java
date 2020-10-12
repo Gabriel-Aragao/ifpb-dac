@@ -13,4 +13,27 @@ public class PessoaFisica extends Cliente{
     private BigDecimal renda;
 
 
+    public BigDecimal getRenda() {
+        return renda;
+    }
+
+    public void setRenda(BigDecimal renda) {
+        this.renda = renda;
+    }
+
+    public String getProfissao() {
+        return profissao;
+    }
+
+    public void setProfissao(String profissao) {
+        this.profissao = profissao;
+    }
+
+    public Long getCpf() {
+        return cpf;
+    }
+
+    public void setCpf(Long cpf) {
+        this.cpf = cpf;
+    }
 }

@@ -1,20 +1,24 @@
 package br.edu.ifpb.jpa.entidades;
 
 
-import javax.persistence.EmbeddedId;
-import javax.persistence.Entity;
-import javax.persistence.ManyToMany;
+import javax.persistence.*;
 
 import br.edu.ifpb.jpa.entidades.embeddables.ContaId;
+import br.edu.ifpb.jpa.entidades.enums.TipoConta;
+
+import java.util.List;
 
 @Entity
+@Table(name = "CONTAS_TB")
 public class Conta {
 
 	@EmbeddedId
 	private ContaId id;
 
 	@ManyToMany(mappedBy = "contas")
-	private Cliente[] titulares;
+	private List<Cliente> titulares;
+	@Enumerated(EnumType.STRING)
+	private TipoConta tipo;
 	
 //	private String banco;
 //
@@ -34,12 +38,19 @@ public class Conta {
 		this.id = id;
 	}
 
-	public Cliente[] getTitulares() {
+	public List<Cliente> getTitulares() {
 		return titulares;
 	}
 
-	public void setTitulares(Cliente[] titulares) {
+	public void setTitulares(List<Cliente> titulares) {
 		this.titulares = titulares;
 	}
 
+	public TipoConta getTipo() {
+		return tipo;
+	}
+
+	public void setTipo(TipoConta tipo) {
+		this.tipo = tipo;
+	}
 }

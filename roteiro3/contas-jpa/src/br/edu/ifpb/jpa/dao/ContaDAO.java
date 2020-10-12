@@ -22,7 +22,6 @@ public class ContaDAO {
 		em.getTransaction().commit();
 
 		em.close();
-		emf.close();
 
 	}
 
